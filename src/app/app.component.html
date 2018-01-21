@@ -1,6 +1,7 @@
 <div class="search">
   <input type="search" name="gamename" #searchInput [(ngModel)]="search" height="60px" placeholder="Find games..." (keypress)="onKeyPress()">
   <span class="suggestion" [hidden]="!search" [innerHTML]="suggestion"></span>
+  <span class="sort"></span>
 </div>
 
 <ul class="grid-4-list">
