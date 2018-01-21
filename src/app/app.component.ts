@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   suggestion: string = "";
   games: any[] = [];
   filteredGames: any[] = [];
+  sort: boolean = true;
   constructor(private _appService: AppService) { }
 
   ngOnInit() {
@@ -23,6 +24,13 @@ export class AppComponent implements OnInit {
       alert("Failed to reach server");
     })
   }
+  onSort() {
+    this.filteredGames = this.filteredGames.sort((a: any, b: any): number => {
+      return this.sort ? a.score - b.score : b.score - a.score;
+    })
+    this.sort = !this.sort;
+  }
+
   onKeyPress() {
     if (this.search.length == 0) {
       this.suggestion = "";
